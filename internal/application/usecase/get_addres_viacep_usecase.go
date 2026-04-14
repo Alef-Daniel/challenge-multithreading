@@ -113,6 +113,8 @@ func (g *GetAddressViaCepUseCase) BuildResponse(ctx context.Context, response []
 		address.Bairro = bairro
 	}
 
+	address.Provider = domain.ProviderViaCEP
+
 	return address, nil
 
 }

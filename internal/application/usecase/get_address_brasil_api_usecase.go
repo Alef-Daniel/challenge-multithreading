@@ -85,16 +85,16 @@ func (g *GetAddressBrasilAPIUseCase) BuildResponse(ctx context.Context, response
 		address.Cep = cep
 	}
 
-	if responseMap["logradouro"] != nil {
-		logradouro, ok := responseMap["logradouro"].(string)
+	if responseMap["street"] != nil {
+		logradouro, ok := responseMap["street"].(string)
 		if !ok {
 			return nil, ErrInvalidTypeData
 		}
 		address.Logradouro = logradouro
 	}
 
-	if responseMap["uf"] != nil {
-		uf, ok := responseMap["uf"].(string)
+	if responseMap["state"] != nil {
+		uf, ok := responseMap["state"].(string)
 		if !ok {
 			return nil, ErrInvalidTypeData
 		}
@@ -102,13 +102,15 @@ func (g *GetAddressBrasilAPIUseCase) BuildResponse(ctx context.Context, response
 		address.UF = uf
 	}
 
-	if responseMap["Bairro"] != nil {
-		bairro, ok := responseMap["Bairro"].(string)
+	if responseMap["neighborhood"] != nil {
+		bairro, ok := responseMap["neighborhood"].(string)
 		if !ok {
 			return nil, ErrInvalidTypeData
 		}
 		address.Bairro = bairro
 	}
+
+	address.Provider = domain.ProviderBrasilAPI
 
 	return address, nil
 
