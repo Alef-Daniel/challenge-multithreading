@@ -6,6 +6,6 @@ import (
 	"github.com/alef-daniel/challenge-multithreading/internal/application/domain"
 )
 
-type GetAddressAPIExternal interface {
-	GetAddress(ctx context.Context, cep string) (*domain.Address, error)
+type ProcessAddressUseCase interface {
+	Execute(ctx context.Context, cep string) (*domain.Address, error)
 }

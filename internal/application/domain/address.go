@@ -5,4 +5,5 @@ type Address struct {
 	Logradouro string
 	Bairro     string
 	UF         string
+	Provider   string
 }
