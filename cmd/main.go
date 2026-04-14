@@ -14,9 +14,13 @@ import (
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
+
 	httpClient := pkg.NewClient(time.Minute)
+
 	ViaCep := usecase.NewGetAddressViaCepUseCase(*httpClient)
+
 	BrasilAPI := usecase.NewGetAddressBrasilAPIUseCase(*httpClient)
+
 	processAddress := usecase.NewProcessAddressUseCase(ViaCep, BrasilAPI)
 
 	address, err := processAddress.Execute(ctx, "09330340")
